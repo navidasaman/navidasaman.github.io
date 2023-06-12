@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saman</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" type="image/png" href="laptop.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function showpage(pageid) {
+            var pos = $("#" + pageid).position().top;
+            $("body").animate({ scrollTop: pos }, 1200, "easeInOutSine");
+        }
+
+
+        function introEasein() {
+            $('#intro').animate({ opacity: 1, top: 53 }, 1200, "easeOutSine");
+        }
+
+        function goTop() {
+            $("body").animate({ scrollTop: 0 }, 1000, "easeOutSine");
+        }
+
+        window.addEventListener('scroll', revealScroll);
+
+        function revealScroll() {
+            var exposed = document.querySelectorAll('.revealScroll');
+
+            for (var i = 0; i < exposed.length; i++) {
+                var windowheight = window.innerHeight;
+                var top = exposed[i].getBoundingClientRect().top;
+                var when = 1;
+
+                if (top >= windowheight - when) {
+                    exposed[i].classList.add('active');
+                }
+                else {
+                    exposed[i].classList.remove('active');
+                }
+            }
+
+            var start = 0;
+            $(window).scroll(function () {
+                var scrolled = window.pageYOffset;
+                if (scrolled < 150) {
+                    document.getElementsByClassName('.contentPanel').style.display = "block";
+                } else if (scrolled > 0 && scrolled < $(document).height() - $(window).height()) {
+                    if (scrolled > start) {
+                        hideNav();
+                    } else {
+                        showNav();
+                    }
+                    start = scrolled;
+                }
+            });
+        }
+
+        function hideNav() {
+            $(".contentPanel").removeClass("is-visible").addClass("is-hidden");
+        }
+
+        function showNav() {
+            $(".contentPanel").removeClass("is-hidden").addClass("is-visible").addClass("scrolling");
+
+            previousScroll = currentScroll;
+
+
+        }
+
+
+
+
+
+    </script>
+    <style>
+        .is-visible {
+            opacity: 1;
+            transition: transform 0.4s, opacity 0.2s;
+        }
+
+        .is-hidden {
+            opacity: 0;
+            transition: transform 0.4s, opacity 0.2s;
+        }
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,100&family=Roboto:wght@100&display=swap');
+
+        .page {
+            width: 99vw;
+            background-color: black;
+
+        }
+
+
+        :root {
+            --gradient: linear-gradient {
+                45deg,
+                #04534A,
+                #259689,
+                #55e7fc
+            }
+
+            ;
+        }
+
+        .contactButton {
+            /* background: linear-gradient(90deg, #04534A, #55e7fc);
+            background-color:rgba(4, 83, 74, 0.3); */
+            background: linear-gradient(to right, #04534A, #259689, #55e7fc);
+
+            color: black;
+            font-size: 15px;
+            font-family: monospace;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #09d3ac;
+            border-radius: 5px;
+            margin-top: 3%;
+        }
+
+
+        .contactButton:focus {
+            transform: scale(0.9);
+        }
+
+        .contactButton:hover {
+            opacity: 0.7;
+        }
+
+        #contentLinearBreak {
+            opacity: 0.3;
+            /* filter: blur(2px); 
+            background-color:linear-gradient(90deg, #04534A, #55e7fc);     */
+        }
+
+        /* CSS för landscape */
+        @media screen and (orientation:landscape) {
+
+            body {
+                margin: 0%;
+                padding: 0%;
+                font-weight: lighter;
+                justify-content: center;
+                font-family: Lato;
+                background-color: black;
+                color: whitesmoke;
+
+            }
+
+            section {
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #2e3c4c;
+                color: whitesmoke;
+                background: url('hej.png');
+                background-size: 100vw 97vh;
+                background-repeat: no-repeat;
+                flex-shrink: inherit;
+                box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
+                margin-bottom: -9px;
+            }
+
+            section .content {
+                max-width: 69%;
+            }
+
+            section .content h1 {
+                position: relative;
+                overflow: hidden;
+                color: #09d3ac;
+                font-family: monospace;
+                width: 16ch;
+                animation: typing 2s steps(16), blinking .5s step-end infinite alternate;
+                white-space: nowrap;
+                overflow: hidden;
+                border-right: 3px solid;
+                font-family: monospace;
+                font-size: 4em;
+            }
+
+            #intro {
+                line-height: 2em;
+                text-align: justify;
+                transition: ease-in 1s;
+                text-align: justify;
+                width: 65%;
+                font-size: 1.3em;
+                font-style: italic;
+                animation: intro .7s ease-in;
+            }
+
+            .para {
+                width: 73%;
+                margin: auto;
+                color: whitesmoke;
+                font-size: 1.3em;
+                text-align: justify;
+            }
+
+            .heading2 {
+                width: 73%;
+                margin: 5% auto 2% auto;
+                font-size: 2em;
+                color: #09d3ac;
+            }
+
+            .cardContainer {
+                margin-bottom: 3%;
+                margin-left: 10%;
+            }
+
+            #giveMargin {
+                margin-bottom: 10vh;
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+                margin: auto;
+                text-align: center;
+                cursor: pointer;
+                background-color: rgba(4, 83, 74, 0.4);
+                padding: 1%;
+                width: 100%;
+                border-radius: 50px;
+
+            }
+
+            .cardContainer:hover {
+                opacity: 70%;
+                transition: 0.7s;
+            }
+
+            .revealScroll {
+                position: relative;
+                transform: translateY(0px);
+                opacity: 1;
+                transition: all 1s ease;
+            }
+
+            .revealScroll.active {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+
+            footer {
+                /*background-color:rgba(4, 83, 74, 0.3);*/
+                padding-top: 3%;
+                background: url('flickrUserCogdog.jpg');
+                margin-top: 3%;
+            }
+
+            fieldset {
+                margin-top: 5%;
+                width: max-content;
+                margin: auto;
+                color: whitesmoke;
+            }
+
+            .jumpButton {
+                padding: 2%;
+            }
+
+            .jumpButton:hover {
+                opacity: 0.5;
+                color: white
+                    /* #09d3ac */
+                ;
+                text-decoration: none;
+            }
+
+            .jumpButton:hover {
+                opacity: 0.5;
+                color: white
+                    /* #09d3ac */
+                ;
+                text-decoration: none;
+            }
+
+            .contentPanel {
+                /* transform: rotate(-90deg);*/
+                position: fixed;
+                top: 10vh;
+                left: 30vh;
+                font-family: Lato;
+                z-index: 1000;
+            }
+
+
+        }
+
+
+        /* @media screen and (min-width: 390px) and (max-width:900px) and (orientation:portrait) { 
+          /* CSS för medelstora enheter - Surfplattor
+     
+    } */
+
+
+        /* @media screen and (max-width:375px) and (orientation:portrait) { 
+       */
+        /* CSS för små enheter - portrait
+        }*/
+
+
+
+        /*  @media screen and (min-width: 376px) and (orientation:portrait) { 
+      /* CSS för medelstora enheter - portrait
+      } */
+
+        /* The typing effect */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+        }
+
+        /* blinking | in intro headings */
+        @keyframes blinking {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #09d3ac;
+            }
+        }
+
+        @keyframes intro {
+            0% {
+                margin-top: 100px;
+                opacity: 10%;
+            }
+
+            50% {
+                margin-top: 50px;
+                opacity: 50%
+            }
+
+            100% {
+                margin-top: 0px;
+                opacity: 100%;
+            }
+        }
+
+
+
+        /* slider dark-/lightmode */
+
+        label {
+            margin-bottom: auto;
+            margin-top: 2%;
+            margin-left: 1%
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50px;
+
+        }
+
+        .slider:before {
+            position: absolute;
+            content: ''
+                /* url('sol.svg') */
+            ;
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #ccc;
+        }
+
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        li {
+            list-style: circle;
+        }
+
+        #hide-contentPanel {
+            transition: all .3s ease !important;
+        }
+
+        table {
+            margin-left: 30vh;
+            margin-top: 3%;
+            width: 73vw;
+            background-color: rgba(93, 247, 200, 0.1);
+            border-radius: 10px;
+            padding: 5%;
+        }
+
+        td {
+            padding: 1% 2% 1.5% 2%;
+            color: #63ffdd;
+        }
+
+        .jump {
+            margin: 5% auto 0 auto;
+        }
+
+        .jump span {
+            position: relative;
+            display: inline-block;
+            animation: jumpLetters 4s ease-in-out infinite;
+            animation-delay: calc(0.1s*var(--i));
+        }
+
+        @keyframes jumpLetters {
+            0% {
+                transform: translateY(0px);
+            }
+
+            20% {
+                transform: translateY(-20px);
+            }
+
+            40%,
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .d-block {
+            margin: auto;
+            width: max-content;
+            height: 70vh;
+        }
+
+        .carousel {
+            z-index: 10000;
+        }
+
+        .carousel-indicators li {
+            list-style: none;
+        }
+
+        .cvDiv {
+            margin-left: 30vh;
+            margin-top: 3%;
+            width: 73vw;
+            background-color: rgba(93, 247, 200, 0.1);
+            border-radius: 10px;
+            padding: 2%;
+        }
+
+        #cvHeading {
+            text-decoration: underline;
+            color: #09d3ac;
+        }
+
+        .cvText {
+            margin-left: 20px;
+            margin-top: -1%;
+        }
+
+        .cvList {
+            margin-top: -2.3%;
+        }
+
+        .cvJobbTitel {
+            color: #58d3c4;
+            font-weight: 550;
+        }
+
+
+        .cvTabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+            width: 75vw;
+            margin-bottom: 5%;
+        }
+
+        .cvTabs input[type="radio"] {
+            display: none;
+        }
+
+        .cvTabs label {
+            padding: 15px;
+            background: rgba(4, 83, 74, 0.3);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 20vw;
+            ;
+
+        }
+
+        .cvTabs label:hover {
+            cursor: pointer;
+        }
+
+        .cvTabs .tab {
+            width: 100%;
+            padding: 20px;
+            background: rgba(4, 83, 74, 0.3);
+            order: 1;
+            display: none;
+            border-radius: 10px;
+        }
+
+        .cvTabs .tab h2 {
+            font-size: 3rem;
+            ;
+        }
+
+        .cvTabs input[type='radio']:checked+label+.tab {
+            display: block;
+            background: rgba(4, 83, 74, 0.7);
+
+        }
+
+        .cvTabs input[type='radio']:checked+label {
+            background: rgba(4, 83, 74, 0.7);
+        }
+
+
+        .fardigheter {
+            list-style: none;
+        }
+
+        .fardigheter li:before {
+            content: '✓ ';
+            list-style-type: none;
+
+        }
+
+        ::-webkit-scrollbar {
+            width: .8em;
+
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgba(4, 49, 43, 1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-image: linear-gradient(#09d3ac, #259689, #19665d, #2e3c4c);
+            border-radius: 100vw;
+
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(4, 49, 43, .9);
+        }
+
+        .custom-shape-divider-bottom-1637701737 {
+            left: 0;
+            width: 99vw;
+            overflow: hidden;
+            line-height: 0;
+            z-index: -10;
+        }
+
+        .custom-shape-divider-bottom-1637701737 svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 201px;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-1637701737 .shape-fill {
+            fill: #09d3ab82;
+        }
+
+        .card {
+
+            background-color: transparent;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-img-top {
+            width: min-content;
+            height: 100px;
+        }
+
+        .card-title {
+            color: #09d3ac;
+            text-align: center;
+        }
+
+        .card-deck {
+            margin-top: 2%;
+            width: 98vw;
+        }
+
+        .card-text {
+            text-align: justify;
+            font-size: .8em;
+        }
+
+        .card .card-body {
+            text-align: justify;
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+        .btn-primary {
+            background-color: #09d3ac !important;
+            color: black !important;
+            font-variant: small-caps !important;
+            border-color: #04534A !important;
+        }
+
+        .btn.focus,
+        .btn:focus {
+            box-shadow: 0 0 0 0.2rem rgb(2 33 29 / 25%) !important;
+        }
+
+        .expTech {
+            color: whitesmoke;
+            font-variant: small-caps;
+            background-color: rgb(20, 20, 20);
+            font-weight: 500;
+
+        }
+
+        .cvJobbTitel:before {
+            content: url('briefcase.png');
+            width: 10px;
+            height: 10px;
+            margin-right: 1%;
+            ;
+        }
+
+        .cvUtbildningTitel:before {
+            content: url('grad.png');
+            width: 10px;
+            height: 10px;
+            margin-right: 1%;
+            ;
+        }
+
+        .cvUtbildningTitel {
+            color: #58d3c4;
+            font-weight: 550;
+        }
+
+        .cvTitel {
+            color: whitesmoke;
+            font-weight: 550;
+        }
+
+        .container {
+            min-height: 100vh;
+            width: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .timeline {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .timeline ul {
+            list-style: none !important;
+            margin-top: 7%;
+
+        }
+
+        .timeline ul li {
+            padding: 20px;
+            background-image: linear-gradient(rgb(22, 22, 22), rgb(26, 26, 26), rgb(30, 30, 30));
+
+            /*         background-color:rgb(20, 20, 20);
+ */
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .timeline ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content h1 {
+            font-size: 20px;
+            font-variant: small-caps;
+            font-weight: 500;
+            line-height: 30px;
+            margin-bottom: 10px;
+            color: #09d3ac;
+        }
+
+        .timeline-content p {
+            font-size: 16px;
+            line-height: 30px;
+            font-weight: 300;
+        }
+
+        .timeline-content .timelineTitel {
+            font-size: 13px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media only screen and (min-width:768px) {
+            .timeline::before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 2px;
+                left: 60%;
+                transform: translate(-50px);
+                background-color: grey;
+            }
+
+            .timeline ul li {
+                width: 50%;
+                margin-bottom: 50px;
+                position: relative;
+                list-style: none !important;
+
+            }
+
+            .timeline ul li:nth-child(odd) {
+                float: left;
+                clear: right;
+                transform: translateX(-295px);
+                width: fit-content;
+
+            }
+
+            .timeline ul li:nth-child(even) {
+                float: right;
+                clear: left;
+                transform: translateX(81px);
+                width: fit-content;
+            }
+
+            .timeline::after {
+                content: '';
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                left: 50.4%;
+                background-color: grey;
+                border-radius: 50%;
+                top: 0;
+                list-style: none !important;
+            }
+
+            .timeline ul li:nth-child(odd)::after {
+                transform: translate(50%, -50%);
+                right: -30px;
+            }
+
+            .timeline ul li:nth-child(even)::after {
+                transform: translate(50%, -50%);
+                left: -30px;
+            }
+
+            .timeline ul li:hover::after {
+                background-color: #09d3ac;
+            }
+
+            .timeline-content .timelineTitel {
+                position: absolute;
+                top: -45px;
+            }
+
+            #page5 {
+                background-image: linear-gradient(rgb(0, 0, 0), rgb(5, 5, 5), #010e0e, #001211, #011816);
+                opacity: .8;
+            }
+
+
+        }
+    </style>
+
+
+</head>
+
+<body id="body" onload="introEasein(); showpage(pageid); contentPanelrHideUponScrolling();">
+
+    <!-- C O N T E N T-->
+    <div id="hide-contentPanel" class="contentPanel" class="is-visible">
+        <span><a href="#section" class="jumpButton" onclick="showpage('page1'); ">Home</a></span>
+        <span><a href="#page2" class="jumpButton" onclick="showpage('page2');">About</a></span>
+        <span><a href="#page3" class="jumpButton" onclick="showpage('page3');">Portfolio</a></span>
+        <span><a href="#page5" class="jumpButton" onclick="showpage('page5');">CV</a></span>
+        <div id="contentLinearBreak">_________________________________________________________________</div>
+    </div>
+
+
+    <!-- P A G E  1  V ä l k o m m e n-->
+    <div id="page1" class="page">
+        <section id="section">
+            <div class="content">
+                <h1 id="typingh1"><span>Hi! I'm Saman...</span></h1>
+                <p id="intro" ;>
+                    I'm a Web developer making the web an interesting and harmonius place to browse,
+                    enhancing user experience through effective design and pleasant experience.
+                </p>
+                <img style="border-radius: 50%; height:100px; width:100px; transform: rotate(-9deg); border-color: aquamarine; border-width:3px; border-style:ridge"
+                    src="linkedinbw2.png">
+                <span style="position: absolute; padding-top:1%; padding-left:2%;">
+                    <div style="color:#09d3ac">Saman Ul Haq</div>
+                    <div style="color:#09d3ac">Web developer</div>
+                    <div style="color:#09d3ac">Alingsås</div>
+                </span>
+                <form action="mailto:navidasaman@gmail.com" method="POST">
+                    <input style="width:225px; margin-left:-15px;" type="submit" value="Contact Me"
+                        class="contactButton">
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- P A G E  2   E X P E R I E N C E -->
+    <div id="page2" class="page">
+        <div class="custom-shape-divider-bottom-1637701737">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="content;">
+            <div class="card-deck revealScroll">
+                <div class="card">
+                    <img class="card-img-top" src="cvsvg.jpg" alt="technologies i have Experience working with">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            < Experience & Technologies>
+                        </h5>
+                        <p class="card-text">I'm into the implementation and developement of technologies within
+                            organisations. I enjoy
+                            frontend-developement as I do Backend-developement. The technologies and implementations
+                            I have experience working with include:</p>
+
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                View Experience & technologies
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body expTech">
+                                <p>I have experience working with:</p>
+                                ≻ HTML/CSS <br>
+                                ≻ Media Queries, Bootstrap etc<br>
+                                ≻ Javascript<br>
+                                ≻ PHP with API's; SAX, DOM and XSLT<br>
+                                ≻ Java<br>
+                                ≻ Database - MySQL<br>
+                                ≻ Material design <br>
+                                ≻ User Experience Design<br>
+                                ≻ Object oriented programming<br>
+                                ≻ Procedural programming<br>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <img class="card-img-top" src="Knowledge.png" alt="courses i have attended">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            < University Courses>
+                        </h5>
+                        <p class="card-text">I am currently attending my last year in a three year program at University
+                            of Skövde with the major
+                            web development - programming. My interests include coding, tech and
+                            making creative videos and writing in my spare time.
+                            The courses within the University program in alphabetical order include: </p>
+                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button"
+                            aria-expanded="false" aria-controls="collapseExample2">
+                            View courses
+                        </a>
+                        </p>
+                        <div class="collapse" id="collapseExample2">
+                            <div class="card card-body expTech">
+                                <p>Courses i have attended/going to attend:</p>
+                                ≻ Basic programming with C++<br>
+                                ≻ Computer graphics<br>
+                                ≻ Content management and operation<br>
+                                ≻ Data Communication<br>
+                                ≻ Database Construction<br>
+                                ≻ Database System (MySQL)<br>
+                                ≻ Examination research: information technology specialized in web developement<br>
+                                ≻ Information safety<br>
+                                ≻ Object oriented programming<br>
+                                ≻ Procedural programming<br>
+                                ≻ Introduction to User Experience Design <br>
+                                ≻ IT in organisations<br>
+                                ≻ Mobile application design<br>
+                                ≻ Object oriented programming (in Java)<br>
+                                ≻ Operative systems</br>
+                                ≻ Programming - mobile applications<br>
+                                ≻ Project in Software Engineering<br>
+                                ≻ Webprogramming<br>
+                                ≻ Web technologies research and developement<br>
+                                ≻ Website design<br>
+                                ≻ XML API<br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <img class="card-img-top" src="portfolio.jpg" alt="portfolio web developer">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            < Portfolio>
+                        </h5>
+                        <p class="card-text">I've created websites, landing pages, android apps, games etc. Click the
+                            button below to view some chosen work or check my GitHub out.<br>
+                            <span><a href="https://github.com/navidasaman?tab=repositories
+                                " class="fa fa-github"
+                                    style="background-color: transparent; text-decoration: none; margin-top: 5.8%;"></a></span>
+                        </p>
+                        <a class="btn btn-primary" href="#page3" onclick="showpage('page3');" role="button">
+                            View Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!--        <div class="content;">
+                <h2 class="heading2";> < Experience & Technologies ></h2> 
+                <p class="para">
+                    I'm into the implementation and developement of technologies within organisations. I enjoy
+                    frontend-developement as I do Backend-developement. The technologies and implementations 
+                    I have experience working with include:
+        
+                    <table class="revealScroll">
+                        <th></th>
+                        <tr>
+                            <td style="padding-top: 2%;">
+                            ► HTML/CSS</td>
+                            <td>► Material design </td>
+                        </tr>
+                        <tr>
+                            <td>► Media Queries, Bootstrap etc</td>
+                            <td>► User Experience Design</td>
+                        </tr>
+                        <tr>
+                            <td>► Javascript</td>
+                            <td>► PHP with API's; SAX, DOM and XSLT</td>  
+                        </tr>
+                        <tr>
+                            <td>► Java</td>
+                            <td>► Object oriented programming methods</td>
+                        </tr>
+                        <tr>    
+                            <td>► Database - MySQL</td>   
+                            <td>► Procedural programming methods</td>
+                        </tr>
+                        <tr>    
+                            <td></td>   
+                            <td></td>
+                        </tr>
+                    </table>
+                </p> -->
+    </div>
+    </div>
+    </div>
+
+    <!-- P A G E  3   P O R T F O L I O -->
+
+    <div id="page3" class="page">
+        <h2 class="heading2 revealScroll">
+            < Portfolio>
+        </h2>
+
+        <div id="carouselExampleIndicators" class="carousel slide revealScroll" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-90" src="mobil.png" alt="Java app for wonders of the world">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 style="background-color:rgba(0, 0, 0, 0.3); width:fit-content; margin:auto; padding:1%;"><a
+                                href="https://github.com/a20samul/Assignment-5_Project" class="fa fa-github"
+                                style="background-color: transparent; text-decoration: none; "> Android app in Java</a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <video class="d-block w-95" autoplay loop muted controls>
+                        <source src="spavideo.mp4" type="video/mp4" alt="Website for a spa page" />
+                    </video>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-90" src="..." alt="landing pages">
+                    <div class="carousel-caption d-none d-md-block">
+                        <video class="d-block w-90 h-70" autoplay loop muted controls>
+                            <source src="s2.mp4" type="video/mp4" alt="Website for a spa page" />
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- P A G E  4   C O U R S E S -->
+    <!--   <div id="page4" class="page">
+            <div class="Courses;">
+                <h2 class="heading2";> < Courses ></h2> 
+                <p class="para">
+                    I'm a web developer based in Alingsås, Sweden. I am currently attending my last year at a three year program at University of Skövde with the major
+                    web development - programming. My interests include coding, understanding tech and 
+                    making creative videos and writing in my spare time. I'm a webdeveloper amongst many other things.
+                    The courses within the University program in alphabetical order include:
+                </p>
+                <table class="revealScroll">
+                    <th></th>
+                    <tr>
+                        <td>► Basic programming with C++</td>   
+                        <td>► Mobile application design</td>         
+                    </tr>
+                    <tr>
+                        <td>► Computer graphics</td>
+                        <td>► Object oriented programming (in Java)</td>  
+                    </tr>
+                    <tr>
+                        <td>► Content management and operation</td>
+                        <td>► Operative systems</td>
+                    </tr>
+                    <tr>
+                        <td>► Data Communication</td>
+                        <td>► Programming - mobile applications (Java android)</td>
+                    </tr>
+                    <tr>    
+                        <td>► Database Construction</td>
+                        <td>► Project in Software Engineering</td>
+                    </tr>
+                    <tr>    
+                        <td>► Database System (MySQL)</td>   
+                        <td>► Webprogramming</td>
+                    </tr>
+                    <tr>    
+                        <td>► Examination research: information technology specialized in web developement</td>   
+                        <td>► Web technologies research and developement</td>
+                    </tr>
+                    <tr>    
+                        <td>► Information safety</td>   
+                        <td>► Website design</td>
+                    </tr>
+                    <tr>    
+                        <td>► Introduction to User Experience Design</td>   
+                        <td>► XML API</td>
+                    </tr>
+                    <tr>    
+                        <td>► IT in organisations</td>   
+                    </tr>
+                </table>
+            </div>
+        </div> -->
+
+
+
+    <!-- P A G E  5   C V -->
+    <div id="page5" class="page">
+        <h2 class="heading2" ;>
+            < CV>
+        </h2>
+        <!-- Timeline -->
+        <div class="container revealScroll">
+            <div class="timeline">
+                <ul>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel"> Högskolan i Skövde</h1>
+                            <p>Administrativ support assistent | 2020 - 2023</p>
+                            <p class="cvText">Anteckningsstöd för studenter med dyslexi. Kräver god förståelse för andra
+                                människor, deras inlärning samt förståelse för hur detta kan framgå på ett optimalt
+                                sätt.
+                                Ökade förståelse samt gav erfarenhet inom att framföra information på ett engagerande
+                                och lättförståeligt sätt för att underlätta kommunikation samt inlärning. </p>
+                            <br>
+
+                            <p class="cvText">- Studenter erhöll goda betyg genom åren och uppvisade tacksamhet.</p>
+
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Utbildning</h2>
+                            <h1 class="cvUtbildningTitel"> Webbutvecklare - programmering</h1>
+                            <p class="cvText">Högskolan i Skövde | 2020 Sept - 2023 juni</p>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content  revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel"> Apoteket AB</h1>
+                            <p>Butikssäljare | 2018 - 2019</p>
+                            <p class="cvText">- Rådgivning, försäljning, varuhantering/inventering, kassaarbete; kort,
+                                kontanter, rabatter, returer och byten.</p>
+                            <p class="cvText">- Löste konflikter för att resultera i kundnöjdhet, skapade relationer med
+                                återkommande kunder för att öka kundlojalitet, skapade organiserad och strukturerad
+                                inventarium, gav god kundservice för att förse kundens behov utifrån värderingar och
+                                standard.</p>
+                            <p class="cvText">- Krävde och utvecklade erfarenhet inom noggrannhet, lyhördhet,
+                                kommunikation, empatiskt lyssnande samt förståelse och god service utefter kundens
+                                behov.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content  revealScroll">
+                            <h2 class="timelineTitel">Utbildning</h2>
+                            <h1 class="cvUtbildningTitel"> Apotekarprogrammet</h1>
+                            <p class="cvText">Göteborgs Universitet | 2015 Sept - 2019 Aug <br>(ej avslutad)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content  revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel">Bilfirma</h1>
+                            <p>Sekreterare | 2014 - 2015</p>
+                            <p class="cvText">- Administrativa uppgifter, pappersarbete, mötesbokningar, telefonsamtal.
+                            </p>
+                            <p class="cvText">- Krävde och utvecklade god och tydlig kommunikation och en strukturerad
+                                omgivning.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Utbildning</h2>
+                            <h1 class="cvUtbildningTitel"> Naturvetenskapligt basår</h1>
+                            <p class="cvText">Göteborgs Universitet | 2014 Sept - 2015 Maj</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel"> Alingsås kommun</h1>
+                            <p>Vikarie | 2013 - 2014</p>
+                            <p class="cvText">Vikarie i förskolor. Krävde tålamod, kreativitet, snabbtänkande och
+                                förståelse.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Utbildning</h2>
+                            <h1 class="cvUtbildningTitel"> Yrkesförberedande utbildning Service- <br>och försäljning
+                            </h1>
+                            <p>Miroi | 2012 Okt - 2013 Mars</p>
+                            <p class="cvText">- Försäljning</p>
+                            <p class="cvText">- Jämställdhet</p>
+                            <p class="cvText">- Personlig utveckling</p>
+                            <p class="cvText">- Marknadsföring</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel"> MQ Marqet</h1>
+                            <p>Butikssäljare, APU | 2013</p>
+                            <p class="cvText">Ansvarig för att ge kunder exceptionell service av hög kvalitet.
+                                kassaarbete, varuhantering, merförsäljning samt butikens övriga uppgifter.
+                                Krävde anpassningsbarhet samt öga för kundens behov. Guidade kunder för att med framgång
+                                finna deras personliga stil samt uppdaterade dem om rea och nedsatta priser.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Utbildning</h2>
+                            <h1 class="cvUtbildningTitel"> Barn- och Fritidsprogrammet<br>pedagogisk inriktning</h1>
+                            <p> Alströmergymnasiet | 2009 Aug -2012 juni</p>
+                            <p class="cvText">Praktik i flertal förskolor ingick bl.a.:</p>
+                            <h5 class="cvJobbTitel">Kulingsbergsskolan</h5>
+                            <p>Hjälp & stöd för nyanlända barn årskurs 1-5, APU </p>
+                            <p class="cvText">- Stöd för nyanlända barn som inte <br>behärskade det svenska språket.
+                                <br>Ökade kommunikationsförmågan, tålamod, <br>förståelse och empati till medmänniskor.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-content revealScroll">
+                            <h2 class="timelineTitel">Jobb</h2>
+                            <h1 class="cvJobbTitel">Hälsostudion</h1>
+                            <p>Barnpassning | 2012</p>
+                            <p class="cvText">Barnpassning kvällstid, skapade engagerande och underhållande samt
+                                pedagogiska och lärande aktiviteter som bidrog till det kreativa tänkandet.</p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Arbetslivserfarenhet -->
+        <div class="cvTabs" style="display:none;">
+            <input type="radio" id="Arbetslivserfarenhet" name="cvTabs" checked="checked">
+            <label for="Arbetslivserfarenhet">Arbetslivserfarenhet</label>
+            <div class="tab">
+                <!--                 <h4 id="cvHeading">Arbetslivserfarenhet</h4>
+ -->
+                <h5 class="cvJobbTitel">Högskolan i Skövde</h5>
+                <p>Anteckningsstöd| 2020 - fortlöpande</p><br>
+                <p class="cvText">Anteckningsstöd för studenter med dyslexi. Kräver god förståelse för andra människor,
+                    deras inlärning samt förståelse för hur detta kan framgå på ett optimalt sätt.
+                    Ökade förståelse samt gav erfarenhet inom att framföra information på ett engagerande och
+                    lättförståeligt sätt för att underlätta kommunikation samt inlärning. </p>
+                <br>
+                <ul class="cvList">
+                    <li>Studenter erhöll goda betyg genom åren och uppvisade tacksamhet.</li>
+                </ul>
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">Apoteket AB</h5>
+                <p>Butikssäljare| 2018 - 2019 </p><br>
+                <ul class="cvList">
+                    <li>Rådgivning, försäljning, varuhantering, kassaarbete; kort, kontanter, rabatter, returer och
+                        byten. </li>
+                    <li>Löste konflikter för att resultera i kundnöjdhet, skapade relationer med återkommande kunder för
+                        att öka kundlojalitet, skapade organiserad och strukturerad inventarium, gav god kundservice för
+                        att förse kundens behov utifrån värderingar och standard.</li>
+                    <li>Krävde och utvecklade erfarenhet inom noggrannhet, lyhördhet, kommunikation, empatiskt lyssnande
+                        samt förståelse och god service utefter kundens behov.</li>
+                </ul>
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">Sabahs Bilfirma</h5>
+                <p>Sekreterare| 2014 - 2015</p><br>
+                <ul class="cvList">
+                    <li>Administrativa uppgifter, pappersarbete, mötesbokningar, telefonsamtal.</li>
+                    <li>Krävde och utvecklade god och tydlig kommunikation och en strukturerad omgivning.</li>
+                </ul>
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">Alingsås kommun</h5>
+                <p>Vikarie | 2013 - 2014</p><br>
+                <p class="cvText">
+                    Vikarie i förskolor. Krävde tålamod, kreativitet, snabbtänkande och förståelse.
+                </p>
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">MQ Marqet</h5>
+                <p>Butikssäljare, APU| 2013</p><br>
+                <p class="cvText">Ansvarig för att ge kunder exceptionell service av hög kvalitet.
+                    kassaarbete, varuhantering, merförsäljning samt butikens övriga uppgifter.
+                    Krävde anpassningsbarhet samt öga för kundens behov. Guidade kunder för att med framgång finna deras
+                    personliga stil samt uppdaterade dem om rea och nedsatta priser.
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">Kulingsbergsskolan</h5>
+                <p>Stöd för nyanlända invandrarbarn ÅK 1-5, APU | 2012, 4 veckor</p><br>
+                <p class="cvText">
+                    Hjälpstöd för nyanlända barn som inte behärskade det svenska språket. Ökade kommunikationsförmågan,
+                    förståelse, tålamod och empati till medmänniskor.
+                </p>
+                <br>
+
+                <h5 class="cvJobbTitel">Hälsostudion</h5>
+                <p>Barnpassning, extrajobb| 2012</p><br>
+                <p class="cvText">Barnpassning kvällstid, skapade engagerande och underhållande samt pedagogiska och
+                    lärande aktiviteter som bidrog till det kreativa tänkandet.</p>
+                <br>
+            </div>
+
+            <!-- Utbildning -->
+            <input type="radio" id="Utbildning" name="cvTabs">
+            <label for="Utbildning">Utbildning</label>
+            <div class="tab">
+                <h5 class="cvTitel">Utbildning</h5><br>
+                <ul class="cvList">
+                    <h5 class="cvUtbildningTitel">Webbutvecklare - programmering</h5>
+                    <p class="cvText">Högskolan i Skövde | 2020 Sept - fortgående</p><br>
+
+
+                    <h5 class="cvUtbildningTitel">Apotekarprogrammet</h5>
+                    <p class="cvText">Göteborgs Universitet | 2015 Sept - 2019 Aug (ej avslutad)</p><br>
+
+
+                    <h5 class="cvUtbildningTitel">Naturvetenskapligt basår</h5>
+                    <p class="cvText">Göteborgs Universitet | 2014 Sept - 2015 Maj</p><br>
+
+
+                    <h5 class="cvUtbildningTitel">Yrkesförberedande utbildning inriktning Service- och försäljning</h5>
+                    <p class="cvText">Miroi | 2012 Okt - 2013 Mars</p><br>
+                    <p class="cvText">Kunskap om försäljning, jämställdhet, arbetsmiljö, personlig utveckling och
+                        marknadsföring.</p>
+                    <br>
+
+
+                    <h5 class="cvUtbildningTitel">Barn- och Fritidsprogrammet pedagogisk inriktning</h5>
+                    <p class="cvText"> Alströmergymnasiet | 2009 Aug -2012 juni</p><br>
+                    <br>
+
+            </div>
+
+            <!-- Övrigt -->
+            <input type="radio" id="etc" name="cvTabs">
+            <label for="etc">Färdigheter</label>
+            <div class="tab">
+                <b class="cvTitel">Språk: </b>
+                <ul class="fardigheter">
+                    <li class="fardigheter">Svenska flytande i tal och skrift</li>
+                    <li class="fardigheter">Engelska flytande i tal och skrift</li>
+                    <li class="fardigheter">Urdu flytande i tal.</li>
+                </ul>
+                <b class="cvTitel">Erfarenhet inom: </b>
+                <ul class="fardigheter">
+                    <li class="fardigheter">UX-design</li>
+                    <li class="fardigheter">Applikationsdesign</li>
+                    <li class="fardigheter">Webbutveckling (Java, C++, MySQL, PHP (DOM, SAX, XSLT), JavsScript,
+                        Bootstrap, Media Queries, HTML/CSS,).</li>
+                    <li class="fardigheter">Officepaketet samt programhantering, van datoranvändare, internet samt
+                        informationssökning.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Go back to top -->
+        <span><a href="#section" onclick="goTop();" class="jumpButton"
+                style="width: max-content; float:right; background-color: white; color:black; box-shadow:0px 2px 4px rgb(0 0 0 / 30%), 3px 3px 10px rgb(0 0 0 / 22%);font-weight: bolder; text-decoration: none;margin-top:-15vh; padding: 1% 1.5%; margin-right: 2%;">☝️</a></span>
+
+        <div class="jump heading2 revealScroll">
+            <span style="--i:1;">Thank</span>
+            <span style="--i:2;">you</span>
+            <span style="--i:3;">for</span>
+            <span style="--i:4;">stopping</span>
+            <span style="--i:5;">by,</span>
+            <span style="--i:6;">don't</span>
+            <span style="--i:7;">hesitate</span>
+            <span style="--i:8;">to</span>
+            <span style="--i:9;">contact</span>
+            <span style="--i:10;">me!</span>
+        </div>
+
+        <footer>
+            <form action="mailto:navidasaman@gmail.com" method="POST">
+                <fieldset>
+                    <legend style="padding-bottom:5%;">Contact Me:</legend>
+                    <span>
+                        <input type="text" name="name" placeholder="Name" required style="width:262.5px;">
+                    </span>
+                    <div>
+                        <textarea name="comments" cols="30" rows="7" placeholder="Write your message here!"
+                            style="width:262.5px;"></textarea>
+                    </div>
+                    <input type="submit" value="✉️ Send Message" class="contactButton" style="width:262.5px;">
+                </fieldset>
+            </form>
+            <p style="color: whitesmoke; text-align: center; padding-bottom:1%; margin-bottom:0%; margin-top:2%;">
+                Copyright 2023 © Saman<br>
+                <a href="https://github.com/navidasaman?tab=repositories
+            " class="fa fa-github" style="background-color: transparent; text-decoration: none; "></a>
+            </p>
+        </footer>
+</body>
+
+</html>
